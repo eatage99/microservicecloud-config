@@ -1,0 +1,81 @@
+spring: 
+  profiles: 
+    active: 
+    - dev
+---
+server: 
+  port: 8001
+spring: 
+  profiles: dev #开发环境
+  application: 
+    name:microservicecloud-config-dept-client
+  datasource: 
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver 
+    url: jdbc:mysql://localhost:3300/cloudDB01?useSSL=false&serverTimezone=UTC
+    username: root
+    password: china
+    dbcp2: 
+      min-idle: 5
+      initial-size: 5
+      max-total: 5
+      max-wait-millis: 200
+mybatis: 
+  config-location: classpath:mybatis/mybatis.cfg.xml
+  type-aliass-package: com.atguigu.springcloud.entities
+  mapper-locations: 
+  - classpath:mybatis/mapper/**/*.xml
+  
+eureka: 
+  client: 
+    server-url: 
+      defaultZone: http://eureka-dev.com:7001/eureka/
+    instance: 
+      instance-id: dept-8001.com
+      prefer-ip-address: true
+
+
+info: 
+  app.name: atguigu-microservicecloud-springcloudconfig01
+  company.name: www.atguigu.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+---
+
+server: 
+  port: 8001
+spring: 
+  profiles: test #开发环境
+  application: 
+    name:microservicecloud-config-dept-client
+  datasource: 
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver 
+    url: jdbc:mysql://localhost:3300/cloudDB02?useSSL=false&serverTimezone=UTC
+    username: root
+    password: china
+    dbcp2: 
+      min-idle: 5
+      initial-size: 5
+      max-total: 5
+      max-wait-millis: 200
+mybatis: 
+  config-location: classpath:mybatis/mybatis.cfg.xml
+  type-aliass-package: com.atguigu.springcloud.entities
+  mapper-locations: 
+  - classpath:mybatis/mapper/**/*.xml
+  
+eureka: 
+  client: 
+    server-url: 
+      defaultZone: http://eureka-dev.com:7001/eureka/
+    instance: 
+      instance-id: dept-8001.com
+      prefer-ip-address: true
+
+
+info: 
+  app.name: atguigu-microservicecloud-springcloudconfig02
+  company.name: www.atguigu.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
